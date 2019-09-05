@@ -10,6 +10,11 @@
 #### Criar volume para armazenar os dados do Postgresql
 `docker create -v /var/lib/postgresql/data --name PostgresData alpine`
 
-#### Executar o container do banco (Obs: estou mapeando para a porta 5532 na máquina host pois já tenho uma instância do PostgreSQL instalada ocupando a porta 5432)
-`docker run -p 5532:5432 --name postgres -e POSTGRES_PASSWORD=admin -d --volumes-from PostgresData postgres`
+#### Executar o container do banco
+`docker run -p 5432:5432 --name postgres -e POSTGRES_PASSWORD=admin -d --volumes-from PostgresData postgres`
 
+#### Criar a imagem do docket para a aplicação ("contatosapp")
+`docker build . -t contatosapp`
+
+#### Subir a aplicação com o docker-compose (banco + aplicacao)
+`docker-compose up`
