@@ -2,8 +2,10 @@ package com.moskit.contatos.dto;
 
 import com.moskit.contatos.model.Contato;
 import org.springframework.beans.BeanUtils;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class ContatoRequest {
@@ -14,9 +16,10 @@ public class ContatoRequest {
     private String telefoneCelular;
     private String emailComercial;
     private String emailPessoal;
-    @NotEmpty(message = "O campo data de nascimento é obrigatório")
+    @NotNull(message = "O campo data de nascimento é obrigatório")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dataNascimento;
-    @NotEmpty(message = "O campo favorito é obrigatório")
+    @NotNull(message = "O campo favorito é obrigatório")
     private Boolean favorito;
 
     public Contato toContato() {
