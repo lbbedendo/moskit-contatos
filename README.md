@@ -13,8 +13,8 @@
 #### Executar o container do banco
 `docker run -p 5432:5432 --name postgres -e POSTGRES_PASSWORD=admin -d --volumes-from PostgresData postgres`
 
-#### Criar a imagem do docket para a aplicação ("contatosapp")
+#### Criar a imagem do docker para a aplicação ("contatosapp")
 `docker build . -t contatosapp`
 
-#### Subir a aplicação com o docker-compose (banco + aplicacao)
+#### Subir a aplicação com o docker-compose (banco + aplicação)
 `docker-compose up`
