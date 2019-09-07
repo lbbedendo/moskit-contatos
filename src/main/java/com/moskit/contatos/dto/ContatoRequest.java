@@ -1,8 +1,10 @@
 package com.moskit.contatos.dto;
 
+import com.moskit.contatos.exception.ContatoException;
 import com.moskit.contatos.model.Contato;
 import org.springframework.beans.BeanUtils;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.util.ObjectUtils;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -26,6 +28,16 @@ public class ContatoRequest {
         Contato contato = new Contato();
         BeanUtils.copyProperties(this, contato);
         return contato;
+    }
+
+    public void validate() {
+        if (ObjectUtils.isEmpty(telefoneComercial) && ObjectUtils.isEmpty(telefoneResidencial) && ObjectUtils.isEmpty(telefoneCelular)) {
+            throw new ContatoException("Pelo menos 1 telefone é obrigatório");
+        }
+
+        if (ObjectUtils.isEmpty(emailComercial) && ObjectUtils.isEmpty(emailPessoal)) {
+            throw new ContatoException("Pelo menos 1 e-mail é obrigatório");
+        }
     }
 
     public String getNome() {
