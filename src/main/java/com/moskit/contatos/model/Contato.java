@@ -1,5 +1,7 @@
 package com.moskit.contatos.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -32,6 +34,7 @@ public class Contato {
     private String emailPessoal;
 
     @Column(name = "DATA_NASCIMENTO")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate dataNascimento;
 
     @Column(name = "FAVORITO")
