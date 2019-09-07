@@ -64,7 +64,7 @@ public class ContatoControllerTest {
     }
 
     @Test
-    public void save_isBadRequest_quandoTentarSalvarUmContatoSemTelefone() throws Exception {
+    public void save_isBadRequest_quandoTentarSalvarUmContatoSemNenhumTelefone() throws Exception {
         ContatoRequest request = new ContatoRequest();
         request.setNome("Tony Stark");
         request.setEmailComercial("tony@stark.com");
@@ -78,7 +78,7 @@ public class ContatoControllerTest {
     }
 
     @Test
-    public void save_isBadRequest_quandoTentarSalvarUmContatoSemEmail() throws Exception {
+    public void save_isBadRequest_quandoTentarSalvarUmContatoSemNenhumEmail() throws Exception {
         ContatoRequest request = new ContatoRequest();
         request.setNome("Tony Stark");
         request.setTelefoneComercial("4399861932");
@@ -90,6 +90,34 @@ public class ContatoControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message", is("Pelo menos 1 e-mail é obrigatório")));
 
+    }
+
+    @Test
+    public void save_isBadRequest_quandoTentarSalvarUmContatoSemDataNascimento() throws Exception {
+        ContatoRequest request = new ContatoRequest();
+        request.setNome("Tony Stark");
+        request.setTelefoneComercial("4399861932");
+        request.setEmailComercial("tony@stark.com");
+        request.setFavorito(true);
+        mockMvc.perform(post("/contato")
+                .content(objectMapper.writeValueAsString(request))
+                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", is("O campo data de nascimento é obrigatório")));
+    }
+
+    @Test
+    public void save_isBadRequest_quandoTentarSalvarUmContatoSemCampoFavorito() throws Exception {
+        ContatoRequest request = new ContatoRequest();
+        request.setNome("Tony Stark");
+        request.setTelefoneComercial("4399861932");
+        request.setEmailComercial("tony@stark.com");
+        request.setDataNascimento(LocalDate.of(1972, 5, 25));
+        mockMvc.perform(post("/contato")
+                .content(objectMapper.writeValueAsString(request))
+                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", is("O campo favorito é obrigatório")));
     }
 
     @Test
