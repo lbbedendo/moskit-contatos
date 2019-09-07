@@ -52,6 +52,7 @@ public class ContatoController {
     }
 
     @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
     public void deleteById(@PathVariable Integer id) {
         contatoService.deleteById(id);
     }
