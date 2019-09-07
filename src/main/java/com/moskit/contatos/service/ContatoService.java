@@ -18,10 +18,12 @@ public class ContatoService {
     }
 
     public Contato save(ContatoRequest contatoRequest) {
+        contatoRequest.validate();
         return contatoRepository.save(contatoRequest.toContato());
     }
 
     public Contato save(Integer id, ContatoRequest contatoRequest) {
+        contatoRequest.validate();
         Contato contato = contatoRequest.toContato();
         contato.setId(id);
         return contatoRepository.save(contato);
