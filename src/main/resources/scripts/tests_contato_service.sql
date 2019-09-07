@@ -1,0 +1,3 @@
+INSERT INTO mskt.contato (ID, NOME, TELEFONE_COMERCIAL, EMAIL_COMERCIAL, DATA_NASCIMENTO, FAVORITO) VALUES (1, 'Wanda Maximoff', '4399558877', 'wanda@avengers.com', '1990-04-09', false);
+INSERT INTO mskt.contato (ID, NOME, TELEFONE_COMERCIAL, EMAIL_COMERCIAL, DATA_NASCIMENTO, FAVORITO) VALUES (2, 'Pietro Maximoff', '4399781405', 'pietro@avengers.com', '1990-04-09', false);
+INSERT INTO mskt.contato (ID, NOME, TELEFONE_CELULAR, EMAIL_PESSOAL, DATA_NASCIMENTO, FAVORITO) VALUES (3, 'Erik Lehnsherr', '4399121405', 'eriklehnsherr@gmail.com', '1960-03-14', false);
