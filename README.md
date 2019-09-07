@@ -4,6 +4,7 @@
 * Docker
 * PostgreSQL
 * Flyway (para evoluções do banco de dados)
+* H2 (banco em memória para testes de integração)
 
 # Instruções para executar o projeto
 
