@@ -34,7 +34,7 @@ public class ContatoController {
 
     @PatchMapping("{id}")
     public HttpEntity<Contato> updateFieldFavorito(@PathVariable Integer id,
-                                                   @RequestBody ContatoFavoritoPatchRequest contatoFavoritoPatchRequest) {
+                                                   @RequestBody @Valid ContatoFavoritoPatchRequest contatoFavoritoPatchRequest) {
         contatoService.updateFieldFavorito(id, contatoFavoritoPatchRequest);
         return ResponseEntity.ok().build();
     }
